@@ -1,0 +1,11 @@
+Send Request
+POST http://localhost:3333/alcaldia/registro-usuarios
+Content-Type: application/json
+
+{
+    "codigo_usuario" : 1234,
+    "nombre_usuario" : "Diana",
+    "contrasena" : "dianaYjose",
+    "email": "dmonroym@unal.edu.co",
+    "telefono": "12245356"
+}
