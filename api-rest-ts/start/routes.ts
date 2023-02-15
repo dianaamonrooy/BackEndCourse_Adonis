@@ -19,6 +19,7 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+import UsuariosController from 'App/Controllers/Http/UsuariosController'
 
 Route.get('/', async () => {
   return { hello: 'mine' }
@@ -30,12 +31,22 @@ Route.group(() => {
   Route.get('/listar-perfil','UsuariosController.getListarUsuariosYPerfil')
   Route.get('/listar-publicaciones','UsuariosController.getListarUsuariosYPublicaciones')
   Route.get('/listar-usuarios-grupos','UsuariosController.getListarUsuariosGrupos')
+  // Se pasa directamente un valor en la ruta (:id)
+  // Si no se pone, cuando se haga la consulta se debe escribir (ej:) .../buscar-por-id?id=1
+  Route.get('/buscar-id/:id', 'UsuariosController.buscarPorId')
+  Route.get('/filtro-nombre/', "UsuariosController.filtroPorNombre")
 
   Route.post('/registro-usuarios','UsuariosController.setRegistrarUsuarios')
   Route.post('/registro-perfil','PerfilsController.setRegistrarPerfil')
-  Route.post('/registro-publicacion','PublicacionesController.setRegistroPublicaciones')
+  Route.post('/registro-publicacion','PublicacionesController.setRegistrarPublicacion')
   Route.post('/registro-grupo','GruposController.setRegistrarGrupo')
   Route.post('/registro-usuarios-grupo','GrupoUsuariosController.setRegistrarUsuarioGrupo')
+
+  Route.put('/actualizar-usuario/:id', 'UsuariosController.actualizarUsuario')
+
+  Route.delete('/eliminar-usuario/:id', "UsuariosController.eliminarUsuario")
+
+
 
 
 }).prefix('/alcaldia')

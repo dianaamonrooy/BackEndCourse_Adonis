@@ -5,8 +5,8 @@ export default class UsuarioGrupos extends BaseSchema {
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
-      table.integer('codigo_usuario').unsigned().index('codigo_usuario') // llave primaria
-      table.integer('codigo_grupo').unsigned().index('codigo_grupo') // llave primaria
+      table.integer('codigo_usuario').unsigned().index('usuario_grupos_codigo_usuario') // llave primaria
+      table.integer('codigo_grupo').unsigned().index('usuario_grupos_codigo_grupo') // llave primaria
       table.date('fecha_inicio').notNullable()
       table.foreign('codigo_usuario').references('usuarios.codigo_usuario').onDelete('cascade')
       table.foreign('codigo_grupo').references('grupos.codigo_grupo').onDelete('cascade')
